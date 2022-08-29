@@ -11,7 +11,6 @@ const postSchema = new mongoose.Schema({
     },
     post_banner: {
         type: String,
-        require: true
     },
     post_date: {
         type: Date,
@@ -22,36 +21,36 @@ const postSchema = new mongoose.Schema({
     likes: {
         type: Number
     },
-    user: {
-        description: {
-            type: String
-        },
-        profile_photo: {
-            type: String
-        },
-        email: {
-            type: String
-        },
-        user_name: {
-            type: String,
-            minlength: 3,
-            maxlength: 20,
-            required: true
-        },
-        registration_date: {
-            type: Date
-        },
-        location: {
-            type: String
-        },
-        education: {
-            type: String
-        },
-        savedPost: {
-            type: [String]
-        },
-    }
-})
+
+    user: 
+        {
+            description: {
+                type: String
+            },
+            profile_photo: {
+                type: String
+            },
+            email: {
+                type: String
+            },
+            user_name: {
+                type: String,
+                minlength: 3,
+                maxlength: 20,
+                required: true
+            },
+            registration_date: {
+                type: Date
+            },
+            location: {
+                type: String
+            },
+            education: {
+                type: String
+            },
+        }
+           
+});
 
 module.exports = mongoose.model("post", postSchema);
 
