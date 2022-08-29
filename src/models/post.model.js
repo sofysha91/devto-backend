@@ -21,6 +21,7 @@ const postSchema = new mongoose.Schema({
     likes: {
         type: Number
     },
+
     user: 
         {
             description: {
@@ -52,3 +53,4 @@ const postSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("post", postSchema);
+
