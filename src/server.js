@@ -15,7 +15,7 @@ app.use(express.json());
 app.use("/users", routerUser);
 app.use("/auth", routerAuth);
 
-app.use("/post", routerPost);
+app.use("/posts", routerPost);
 
 //Export
 module.exports = app
