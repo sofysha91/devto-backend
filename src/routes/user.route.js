@@ -42,7 +42,7 @@ router.get("/:id", async(request,response) =>{
     try{
         const { params } = request
         const user = await getUser(params.id)
-        response.status(200)
+        response.status(200);
         response.json({
             success: true,
             data:({
@@ -72,6 +72,7 @@ router.patch("/:id", auth, async (request,response) =>{
             })
         })
     }catch(error){
+        console.log(error)
     response.status(400)
     response.json({
       success: false,
