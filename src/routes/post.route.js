@@ -1,9 +1,55 @@
 // Endpoints
 const express = require("express");
-const { createPost, updatePost, removePost } = require("../usecases/post.usecase");
+const { createPost, updatePost, removePost, getPost, allPosts } = require("../usecases/post.usecase");
 const auth = require("../middlewares/auth.middleware");
 
 const router = express.Router();
+
+//Get Post
+router.get("/:id", async (request, response) => {
+  try {
+      // Path params
+      const { params } = request;
+      const post = await getPost(params.id);        
+      response.json({
+          success: true,
+          data: {
+            post
+          }
+      });
+  } catch (error) {
+      response.status(400);
+      response.json({
+          success: false,
+          message: error.message
+      });
+  }
+});
+
+router.get("/", async (request, response) => {
+  try {
+      const { query } = request;
+      let querySearch = { ...query }   
+      if(query.q){
+        delete querySearch.q;
+        querySearch = {...querySearch, $text: { $search: query.q }}
+      }      
+      const posts = await allPosts(querySearch);
+      
+      response.json({
+          success: true,
+          data: {
+            posts
+          }
+      });
+  } catch (error) {
+      response.status(400)
+      response.json({
+          success: false,
+          message: error.message
+      });
+  }
+});
 
 //& Create Post 
 router.post("/", auth, async (request, response) => {

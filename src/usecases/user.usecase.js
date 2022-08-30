@@ -15,8 +15,13 @@ const getUser = (id) => {
 }
 
 const updateUser = async (id, userData) => {
-    const hashPassword = await bcrypt.hash(userData.password, 10);
-    const user = User.findByIdAndUpdate(id,{...userData, password: hashPassword});
+    
+    if(userData.password){
+        const hashPassword = await bcrypt.hash(userData.password, 10);
+        userData = {...userData, password: hashPassword}
+    }
+
+    const user = User.findByIdAndUpdate(id,userData);
     return user;
 }
    
