@@ -11,13 +11,13 @@ const {
     DB_HOST,
     DB_NAME
 } = process.env;
-
+const PORT = process.env.PORT || 8080;
 const URL = `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}${DB_NAME}`;
 
 mongoose.connect(URL)
 .then(() => {
     console.log("Conectado a MongoDB");
-    app.listen(8080, () => {
+    app.listen(PORT, () => {
         console.log("Server listening...");
     });    
 })
