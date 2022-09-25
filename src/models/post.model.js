@@ -20,7 +20,7 @@ const postSchema = new mongoose.Schema({
         type: [String]
     },
     likes: {
-        type: Number
+        type: [String]
     },
     read_time: {
         type: Number,
