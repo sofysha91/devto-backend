@@ -6,7 +6,7 @@ const router = express.Router();
 router.post("/", async (request, response) => {
     const { body } = request;
     try{
-        const token = await login(body.email, body.password);
+        const token = await login(body.email, body.password);        
         response.status(201)
         response.json({
             success: true,
