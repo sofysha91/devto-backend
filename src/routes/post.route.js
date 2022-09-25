@@ -74,7 +74,7 @@ router.post("/", auth, async (request, response) => {
 });
 
 //& Update Post 
-router.patch("/:id", async (request, response) => {
+router.patch("/:id", auth, async (request, response) => {
     try{
       const { params, body } = request
       const post = await updatePost(params.id, body)
