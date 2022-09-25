@@ -10,7 +10,7 @@ const createUser = async (userData) => {
 }
 
 const getUser = (id) => {
-    const user = User.findById(id)
+    const user = User.findById(id).select("-password");
     return user;
 }
 
